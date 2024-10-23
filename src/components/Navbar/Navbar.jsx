@@ -17,10 +17,12 @@ const Navbar = () => {
             <div className="hidden md:flex space-x-4">
 
             </div>
-            <div className="flex  ">
-                <button type="button" className="bg-[#1E2F5B] hover:bg-[#2d4275] text-slate-50 px-4 py-2 rounded-l-full flex items-center justify-center transition duration-300 cursor">Login</button>
-                <button type="button" className="bg-[#31683B] hover:bg-[#488b54] text-slate-50 px-4 py-2 rounded-r-full flex items-center justify-center transition duration-300 cursor">Signup</button>
+            <div className="hidden sm:flex">
+                <button type="button" style={{ fontFamily: 'Happy Monkey, sans-serif' }}  className="bg-[#1E2F5B] hover:bg-[#2d4275] text-slate-50 px-4 py-2 rounded-l-full flex items-center justify-center transition duration-300 cursor">Login</button>
+                <button type="button" style={{ fontFamily: 'Happy Monkey, sans-serif' }}  className="bg-[#31683B] hover:bg-[#488b54] text-slate-50 px-4 py-2 rounded-r-full flex items-center justify-center transition duration-300 cursor">Signup</button>
             </div>
+                <button type="button" style={{ fontFamily: 'Happy Monkey, sans-serif' }}  className="sm:hidden text-sm bg-[#31683B] hover:bg-[#488b54] text-slate-50 px-3 py-1 rounded-full flex items-center justify-center transition duration-300 cursor">Register</button>
+
         </motion.nav>
     )
 }
