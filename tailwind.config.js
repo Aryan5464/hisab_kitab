@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        fruktur: ['Fruktur', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 }
