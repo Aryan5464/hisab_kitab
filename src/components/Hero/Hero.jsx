@@ -2,7 +2,7 @@ import { motion } from "framer-motion"
 import hro from '../../images/Hero.png'
 const Hero = () => {
     return (
-        <motion.div initial={{ y: -500, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="md:h-[600px] py-[90px] sm:p-64 flex items-center justify-center">
+        <motion.div initial={{ y: -500, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="md:h-[600px] py-[90px] bg-blue-50 sm:p-64 flex items-center justify-center">
             <div className="releative flex flex-col items-center justify-center">
                 <img className="sm:hidden w-48" src={hro} alt="" />
                 <h1 style={{ fontFamily: 'Yatra One, sans-serif' }} className="flex items-center justify-center space-x-2 md:space-x-4 lg:text-8xl md:text-6xl text-4xl"><span className="lg:text-7xl md:text-5xl text-3xl text-[#488B54]">Welcome</span> <span className="lg:text-5xl md:text-3xl text-xl text-slate-500 ">to</span > <span className="text-[#1E2F5B]">HisabKitab</span> </h1>
