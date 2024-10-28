@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+
 import { IoMdAdd } from "react-icons/io";
 import profile from '../../images/hisbKitab_profile.jpeg';
 import { GiHalfDead } from "react-icons/gi";
@@ -117,8 +117,7 @@ const ContactCard = ({ contact }) => {
             <div className="ml-auto">
                 <Dropdown>
                     <DropdownTrigger>
-                        <Button className="flex items-center text-2xl  text-blue-50 rounded-full"
-                            variant="bordered"
+                        <Button className="flex items-center text-2xl border-none   text-blue-50 rounded-full"
                         >
                             <CiMenuKebab />
                         </Button>
@@ -146,7 +145,7 @@ const Contacts = () => {
     return (
         <div>
             <Wlcm />
-            <div className="mt-8 flex flex-col gap-2 bg-blueee text-white p-5 rounded-xl">
+            <div className="mt-4 flex flex-col gap-2 bg-blueee text-white p-5 rounded-xl">
                 <p className=" text-xl sm:text-2xl font-semibold flex items-center justify-between">Contacts <AddContactButton /> </p>
 
                 {!contacts || contacts.length == 0 ? <EmptyContacts /> : contacts.map(contact => (
