@@ -2,8 +2,8 @@ import BottomBar from "./components/BottomBar/BottomBar"
 import LeftBar from "./components/LeftBar/LeftBar"
 import TopBar from "./components/TopBar/TopBar"
 import Contacts from "./pages/Contacts/Contacts"
-import Dashboard from './pages/Dashboard/Dashboard'
-import Transactions from "./pages/Transactions/Transactions"
+// import Dashboard from './pages/Dashboard/Dashboard'
+// import Transactions from "./pages/Transactions/Transactions"
 // import Signup from './pages/Signup/Signup'
 
 import { NextUIProvider } from "@nextui-org/react";

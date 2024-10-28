@@ -3,8 +3,8 @@
 import { IoMdAdd } from "react-icons/io";
 import profile from '../../images/hisbKitab_profile.jpeg';
 import { GiHalfDead } from "react-icons/gi";
-import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@nextui-org/react";
-import { CiMenuKebab } from "react-icons/ci";
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
+// import { CiMenuKebab } from "react-icons/ci";
 
 
 import Wlcm from "../../components/Common/Wlcm"
@@ -38,7 +38,7 @@ const options = [
     },
     {
         key: "delete",
-        label: "Delete file",
+        label: "Delete",
     }
 ];
 
@@ -117,14 +117,14 @@ const ContactCard = ({ contact }) => {
             <div className="ml-auto">
                 <Dropdown>
                     <DropdownTrigger>
-                        <Button className="flex items-center text-2xl border-none   text-blue-50 rounded-full"
+                        <Button className="flex items-center text-2xl w-10 h-10 text-blue-50 rounded-md"
                         >
-                            <CiMenuKebab />
-                        </Button>
+                            {/* <CiMenuKebab />  */} #
+                            </Button>
                     </DropdownTrigger>
                     <DropdownMenu aria-label="Dynamic Actions" className="bg-blue-50 rounded-lg border-2 border-blueee " items={options}>
                         {(item) => (
-                            <DropdownItem 
+                            <DropdownItem
                                 key={item.key}
                                 color={item.key === "delete" ? "danger" : "default"}
                                 className={(item.key === "delete" ? "text-red-600" : "") + ""}
