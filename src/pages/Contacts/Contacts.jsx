@@ -4,7 +4,7 @@ import { IoMdAdd } from "react-icons/io";
 import profile from '../../images/hisbKitab_profile.jpeg';
 import { GiHalfDead } from "react-icons/gi";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
-// import { CiMenuKebab } from "react-icons/ci";
+import { CiMenuKebab } from "react-icons/ci";
 
 
 import Wlcm from "../../components/Common/Wlcm"
@@ -108,7 +108,7 @@ const contacts = [
 
 const ContactCard = ({ contact }) => {
     return (
-        <div className="flex items-center gap-2 hover:bg-[#294c5c] p-1 px-2 rounded-md">
+        <div className="flex items-center gap-2 hover:bg-[#294c5c] p-1 px-2 pr-0 rounded-md">
             <img className="w-10 rounded-full" src={profile} alt="" />
             <div className="flex flex-col gap-1">
                 <p className="cursor-pointer opacity-90 hover:opacity-100 text-lg">{contact.name}</p>
@@ -117,10 +117,11 @@ const ContactCard = ({ contact }) => {
             <div className="ml-auto">
                 <Dropdown>
                     <DropdownTrigger>
-                        <Button className="flex items-center text-2xl w-10 h-10 text-blue-50 rounded-md"
+                        <Button className="flex items-center text-xl  text-blue-50 rounded-md"
                         >
-                            {/* <CiMenuKebab />  */} #
-                            </Button>
+                            <CiMenuKebab /> 
+
+                        </Button>
                     </DropdownTrigger>
                     <DropdownMenu aria-label="Dynamic Actions" className="bg-blue-50 rounded-lg border-2 border-blueee " items={options}>
                         {(item) => (
