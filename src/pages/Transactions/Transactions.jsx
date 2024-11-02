@@ -176,8 +176,8 @@ const TransactionCard = ({ transaction }) => {
       </div>
 
 
-      <Modal backdrop="blur" isOpen={isOpen} onClose={onClose} placement="center" >
-        <ModalContent className=" bg-[#4b7a90] text-white rounded-md p-2 border-white overflow-x-auto mx-5 sm:mx-0">
+      <Modal backdrop="blur" isOpen={isOpen} onClose={onClose} placement="center" className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[350px]">
+        <ModalContent className=" bg-[#294c5c] text-white rounded-md p-2 border-white overflow-x-auto mx-5 sm:mx-0">
           {() => (
             <>
               <ModalHeader className="flex flex-col gap-1 items-center justify-center text-white text-2xl ">
