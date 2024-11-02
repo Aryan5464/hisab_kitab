@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
+import { Modal, ModalContent, ModalHeader, ModalBody, useDisclosure } from "@nextui-org/react";
 import { SiGmail } from "react-icons/si";
 import { FaPhoneAlt } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
-
+import { GiTakeMyMoney } from "react-icons/gi";
 import profile from '../../images/hisbKitab_profile.jpeg';
 // import { useState } from "react";
 
@@ -176,20 +176,20 @@ const TransactionCard = ({ transaction }) => {
       </div>
 
 
-      <Modal backdrop="blur" isOpen={isOpen} onClose={onClose} placement="center" className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[350px]">
-        <ModalContent className=" bg-[#294c5c] text-white rounded-md p-2 border-white overflow-x-auto mx-5 sm:mx-0">
+      <Modal backdrop="blur" isOpen={isOpen} onClose={onClose} placement="center" className="fixed top-1/2 left-[45%] sm:left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[330px] sm:w-[350px]">
+        <ModalContent className=" bg-blue-50 text-bluee rounded-md p-2 !border-red-500 overflow-x-auto mx-5 sm:mx-0">
           {() => (
             <>
-              <ModalHeader className="flex flex-col gap-1 items-center justify-center text-white text-2xl ">
+              <ModalHeader className="flex flex-col gap-1 items-center justify-center text-blueee text-2xl ">
                 Transaction Details
               </ModalHeader>
-              <ModalBody className="text-slate-100 mx-auto ">
+              <ModalBody className="text-blueee mx-auto ">
                 <div className="flex items-center gap-x-5 mb-4 ">
-                  <img className="rounded-full w-14" src={profile} alt="" />
+                  <img className="rounded-full w-16 bg-blueee p-1" src={profile} alt="" />
                   <div>
-                    <p className="flex items-center gap-x-2">{<CgProfile className="text-slate-200 text-xl"  />}{transaction.contact.name} </p>
-                    {transaction.contact.email ? <p className="flex items-center gap-x-2 ">{<SiGmail className="text-slate-200" />} {transaction.contact.email}</p> : ""}
-                    {transaction.contact.phoneNumber ? <p className="flex items-center gap-x-2 ">{<FaPhoneAlt className="text-slate-200" />} {transaction.contact.phoneNumber}</p> : ""}
+                    <p className="flex items-center gap-x-2">{<CgProfile className="text-blueee text-xl"  />}{transaction.contact.name} </p>
+                    {transaction.contact.email ? <p className="flex items-center gap-x-2 ">{<SiGmail className="text-blueee" />} {transaction.contact.email}</p> : ""}
+                    {transaction.contact.phoneNumber ? <p className="flex items-center gap-x-2 ">{<FaPhoneAlt className="text-blueee" />} {transaction.contact.phoneNumber}</p> : ""}
                   </div>
                 </div>
                 <p>
@@ -199,7 +199,7 @@ const TransactionCard = ({ transaction }) => {
                   Date: {new Date(transaction.date).toLocaleString()}
                 </p>
                 <p>
-                  Amount: {transaction.amount >= 0 ? `+${transaction.amount}` : transaction.amount}
+                  Amount: {transaction.amount >= 0 ?  <span className="text-green-400">+{transaction.amount}</span> :  <span className="text-red-500">{transaction.amount}</span>}
                 </p>
                 <p>
                   Balance: {transaction.contact.balance}
@@ -226,7 +226,7 @@ const Transactions = () => {
   return (
     <div>
       <div className="mt-4 flex flex-col gap-2 bg-blueee text-white p-5 rounded-xl mb-10">
-        <p className=" text-xl sm:text-2xl font-semibold flex items-center justify-between">Transactions ~ </p>
+        <p className=" text-xl sm:text-2xl font-semibold flex items-center justify-between">Transactions <GiTakeMyMoney className="text-5xl" /> </p>
         <div className="grid grid-cols-2 sm:grid-cols-6 gap-x-5 sm:gap-x-10 items-center hover:bg-[#294c5c]  p-2 rounded-md w-full">
           <div className="font-semibold sm:text-xl col-span-1">Name</div>
           <div className="font-semibold sm:text-xl col-span-2 hidden sm:block">Description</div>
