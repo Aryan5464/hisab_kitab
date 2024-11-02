@@ -3,6 +3,9 @@ import profile from '../../images/hisbKitab_profile.jpeg';
 import { MdOutlineDashboard, MdOutlineContacts } from "react-icons/md";
 import { FaMoneyBillTransfer } from "react-icons/fa6";
 import { HiOutlineLogout } from "react-icons/hi";
+import { Link } from 'react-router-dom';
+
+
 
 const LeftBar = () => {
   return (
@@ -19,18 +22,18 @@ const LeftBar = () => {
 
 
       <div className='text-slate-100 flex flex-col items-start justify-start gap-4'>
-        <div className='flex items-center gap-2 hover:bg-blue-200 hover:text-blueee py-2 px-4 rounded-full ease-in duration-200 w-full'>
+        <Link to={'/dashboard'} className='flex items-center gap-2 hover:bg-blue-200 hover:text-blueee py-2 px-4 rounded-full ease-in duration-200 w-full'>
           <MdOutlineDashboard />
           <p className='cursor-pointer'>Dashboard</p>
-        </div>
-        <div className="flex items-center gap-2 hover:bg-blue-200 hover:text-blueee py-2 px-4 rounded-full ease-in duration-200 w-full">
+        </Link>
+        <Link to={'/Contacts'} className="flex items-center gap-2 hover:bg-blue-200 hover:text-blueee py-2 px-4 rounded-full ease-in duration-200 w-full">
           <MdOutlineContacts />
           <p className='cursor-pointer'>Contacts</p>
-        </div>
-        <div className="flex items-center gap-2 hover:bg-blue-200 hover:text-blueee py-2 px-4 rounded-full ease-in duration-200 w-full">
+        </Link>
+        <Link to={'/Transactions'} className="flex items-center gap-2 hover:bg-blue-200 hover:text-blueee py-2 px-4 rounded-full ease-in duration-200 w-full">
           <FaMoneyBillTransfer />
           <p className='cursor-pointer'>Transactions</p>
-        </div>
+        </Link>
       </div>
 
       <p className='text-slate-100 flex items-center text-sm gap-1 cursor-pointer mt-auto hover:text-blue-300 '>

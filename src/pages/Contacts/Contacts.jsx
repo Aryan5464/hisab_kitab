@@ -7,12 +7,9 @@ import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@
 import { CiMenuKebab } from "react-icons/ci";
 
 
-import Wlcm from "../../components/Common/Wlcm"
-
-
 const AddContactButton = () => {
     return (
-        <Button className="flex items-center text-sm px-2 py-[2px]  bg-blue-50 text-blueee rounded-xl" color="success" endContent={<IoMdAdd className="inline-block" />}>
+        <Button className="flex items-center text-sm px-2 py-[2px]  bg-blue-50 text-blueee rounded-xl no-border" color="success" endContent={<IoMdAdd className="inline-block" />}>
             Add Contact
         </Button>
     )
@@ -114,21 +111,21 @@ const ContactCard = ({ contact }) => {
                 <p className="cursor-pointer opacity-90 hover:opacity-100 text-lg">{contact.name}</p>
                 {contact.balance > 0 ? <span className="text-green-400 text-sm">owes you {contact.balance}</span> : <span className="text-red-500 text-sm">you own {contact.balance}</span>}
             </div>
-            <div className="ml-auto">
+            <div className="ml-auto no-border">
                 <Dropdown>
                     <DropdownTrigger>
-                        <Button className="flex items-center text-xl  text-blue-50 rounded-md"
+                        <Button className="flex items-center text-xl text-blue-50 rounded-md no-border"
                         >
                             <CiMenuKebab /> 
 
                         </Button>
                     </DropdownTrigger>
-                    <DropdownMenu aria-label="Dynamic Actions" className="bg-blue-50 rounded-lg border-2 border-blueee " items={options}>
+                    <DropdownMenu aria-label="Dynamic Actions" className="bg-blue-50 rounded-lg no-border" items={options}>
                         {(item) => (
                             <DropdownItem
                                 key={item.key}
                                 color={item.key === "delete" ? "danger" : "default"}
-                                className={(item.key === "delete" ? "text-red-600" : "") + ""}
+                                className={(item.key === "delete" ? "text-red-600" : "") + "no-border"}
                             >
                                 {item.label}
                             </DropdownItem>
@@ -145,7 +142,7 @@ const ContactCard = ({ contact }) => {
 const Contacts = () => {
     return (
         <div>
-            <Wlcm />
+            
             <div className="mt-4 flex flex-col gap-2 bg-blueee text-white p-5 rounded-xl">
                 <p className=" text-xl sm:text-2xl font-semibold flex items-center justify-between">Contacts <AddContactButton /> </p>
 
