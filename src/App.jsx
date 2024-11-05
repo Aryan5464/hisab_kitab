@@ -8,6 +8,7 @@ import { NextUIProvider } from "@nextui-org/react";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Transactions from "./pages/Transactions/Transactions";
 import Dashboard from './pages/Dashboard/Dashboard';
+import SingleContact from "./pages/SingleContact/SingleContact";
 // import Signup from './pages/Signup/Signup';
 
 const Layout = () => {
@@ -34,6 +35,7 @@ const router = createBrowserRouter([
       { path: 'Dashboard', element: <Dashboard /> },
       { path: 'Contacts', element: <Contacts /> },
       { path: 'Transactions', element: <Transactions /> },
+      {path: 'SingleContact', element: <SingleContact />}
     ],
   },
 ]);

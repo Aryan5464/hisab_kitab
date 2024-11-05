@@ -26,12 +26,8 @@ const EmptyContacts = () => {
 
 const options = [
     {
-        key: "new",
-        label: "Add Transaction",
-    },
-    {
-        key: "all",
-        label: "All Transactions",
+        key: "Info",
+        label: "All Info"
     },
     {
         key: "delete",
@@ -116,18 +112,13 @@ const ContactCard = ({ contact }) => {
                     <DropdownTrigger>
                         <Button className="flex items-center text-xl text-blue-50 rounded-md no-border"
                         >
-                            <CiMenuKebab /> 
-
+                            <CiMenuKebab />
                         </Button>
                     </DropdownTrigger>
                     <DropdownMenu aria-label="Dynamic Actions" className="bg-blue-50 rounded-lg no-border" items={options}>
                         {(item) => (
-                            <DropdownItem
-                                key={item.key}
-                                color={item.key === "delete" ? "danger" : "default"}
-                                className={(item.key === "delete" ? "text-red-600" : "") + "no-border"}
-                            >
-                                {item.label}
+                            <DropdownItem key={item.key} className="no-border">
+                                <p className={item.label == 'Delete' ? 'text-red-500' : ''}> {item.label}</p>
                             </DropdownItem>
                         )}
                     </DropdownMenu>
@@ -142,7 +133,7 @@ const ContactCard = ({ contact }) => {
 const Contacts = () => {
     return (
         <div>
-            
+
             <div className="mt-4 flex flex-col gap-2 bg-blueee text-white p-5 rounded-xl">
                 <p className=" text-xl sm:text-2xl font-semibold flex items-center justify-between">Contacts <AddContactButton /> </p>
 

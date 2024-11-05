@@ -155,7 +155,6 @@ const TransactionCard = ({ transaction }) => {
 
   return (
     <>
-
       <div className="grid grid-cols-2 sm:grid-cols-6 gap-x-5 sm:gap-x-10 items-center hover:bg-[#294c5c] p-2 rounded-md w-full">
         <div onClick={onOpen} className="col-span-1 cursor-pointer text-lg text-left hover:underline">
           {transaction.contact.name}
