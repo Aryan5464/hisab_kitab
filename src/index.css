@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 body {
-    user-select: none;
+  user-select: none;
 }
 
 .no-border:focus,
 .no-border:active {
-    border: 0 !important;
-    outline: none !important;
+  border: 0 !important;
+  outline: none !important;
 }

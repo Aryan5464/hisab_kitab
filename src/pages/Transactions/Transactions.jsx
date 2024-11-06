@@ -155,14 +155,15 @@ const TransactionCard = ({ transaction }) => {
 
   return (
     <>
-      <div className="grid grid-cols-2 sm:grid-cols-6 gap-x-5 sm:gap-x-10 items-center hover:bg-[#294c5c] p-2 rounded-md w-full">
-        <div onClick={onOpen} className="col-span-1 cursor-pointer text-lg text-left hover:underline">
+      {/* Main Transaction Card */}
+      <div className="grid grid-cols-2 sm:grid-cols-6 gap-x-5 sm:gap-x-10 items-center hover:bg-[#294c5c] p-2 rounded-md w-full" onClick={onOpen}>
+        <div className="col-span-1 cursor-pointer text-lg text-left hover:underline">
           {transaction.contact.name}
         </div>
         <div className="col-span-2 text-left hidden sm:block">
           {transaction.description}
         </div>
-        <div className="col-span-2 text-left  hidden sm:block">
+        <div className="col-span-2 text-left hidden sm:block">
           {new Date(transaction.date).toLocaleString()}
         </div>
         <div className="col-span-1 text-right">
@@ -174,49 +175,36 @@ const TransactionCard = ({ transaction }) => {
         </div>
       </div>
 
+      {/* Blurred Overlay */}
+      {isOpen && (
+        <div className="fixed inset-0 bg-white bg-opacity-10 backdrop-blur-md z-40" onClick={onClose}></div>
+      )}
 
-      <Modal backdrop="blur" isOpen={isOpen} onClose={onClose} placement="center" className="fixed top-1/2 left-[45%] sm:left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[330px] sm:w-[350px]">
-        <ModalContent className=" bg-blue-50 text-bluee rounded-md p-2 !border-red-500 overflow-x-auto mx-5 sm:mx-0">
-          {() => (
-            <>
-              <ModalHeader className="flex flex-col gap-1 items-center justify-center text-blueee text-2xl ">
-                Transaction Details
-              </ModalHeader>
-              <ModalBody className="text-blueee mx-auto ">
-                <div className="flex items-center gap-x-5 mb-4 ">
-                  <img className="rounded-full w-16 bg-blueee p-1" src={profile} alt="" />
-                  <div>
-                    <p className="flex items-center gap-x-2">{<CgProfile className="text-blueee text-xl"  />}{transaction.contact.name} </p>
-                    {transaction.contact.email ? <p className="flex items-center gap-x-2 ">{<SiGmail className="text-blueee" />} {transaction.contact.email}</p> : ""}
-                    {transaction.contact.phoneNumber ? <p className="flex items-center gap-x-2 ">{<FaPhoneAlt className="text-blueee" />} {transaction.contact.phoneNumber}</p> : ""}
-                  </div>
-                </div>
-                <p>
-                  Description: {transaction.description}
-                </p>
-                <p>
-                  Date: {new Date(transaction.date).toLocaleString()}
-                </p>
-                <p>
-                  Amount: {transaction.amount >= 0 ?  <span className="text-green-400">+{transaction.amount}</span> :  <span className="text-red-500">{transaction.amount}</span>}
-                </p>
-                <p>
-                  Balance: {transaction.contact.balance}
-                </p>
-              </ModalBody>
-              {/* <ModalFooter>
-                <Button color="danger" variant="light" onPress={onClose}>
-                  Close
-                </Button>
-              </ModalFooter> */}
-            </>
-          )}
+      {/* Modal */}
+      <Modal isOpen={isOpen} onClose={onClose} className="modal-blur fixed top-1/2 left-[45%] sm:left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[330px] sm:w-[350px] z-50">
+        <ModalContent className="bg-blue-50 text-bluee rounded-md p-2 overflow-x-auto mx-5 sm:mx-0">
+          <ModalHeader className="flex flex-col gap-1 items-center justify-center text-blueee text-2xl">
+            Transaction Details
+          </ModalHeader>
+          <ModalBody className="text-blueee mx-auto">
+            <div className="flex items-center gap-x-5 mb-4">
+              <img className="rounded-full w-16 bg-blueee p-1" src={profile} alt="" />
+              <div>
+                <p className="flex items-center gap-x-2"><CgProfile className="text-blueee text-xl" />{transaction.contact.name}</p>
+                {transaction.contact.email && <p className="flex items-center gap-x-2"><SiGmail className="text-blueee" /> {transaction.contact.email}</p>}
+                {transaction.contact.phoneNumber && <p className="flex items-center gap-x-2"><FaPhoneAlt className="text-blueee" /> {transaction.contact.phoneNumber}</p>}
+              </div>
+            </div>
+            <p>Description: {transaction.description}</p>
+            <p>Date: {new Date(transaction.date).toLocaleString()}</p>
+            <p>Amount: {transaction.amount >= 0 ? <span className="text-green-400">+{transaction.amount}</span> : <span className="text-red-500">{transaction.amount}</span>}</p>
+            <p>Balance: {transaction.contact.balance}</p>
+          </ModalBody>
         </ModalContent>
       </Modal>
     </>
   );
-}
-
+};
 const Transactions = () => {
 
 

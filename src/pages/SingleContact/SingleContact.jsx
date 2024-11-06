@@ -34,7 +34,7 @@ const contact = {
 const SingleTransactionCard = ({ transaction }) => {
     return (
         <div className='flex justify-between px-2 border-b-1 border-slate-400 hover:bg-[#3e6f86]'>
-            <span className='text-[.9rem] tracking-tighter font-extralight'>{transaction.description}</span>
+            <span className=' tracking-tighter font-extralight'>{transaction.description}</span>
             <div className="flex items-center gap-x-3">
                 <span className={transaction.amount >= 0 ? 'text-green-400 text-[.9rem]' : 'text-red-500 text-[.9rem]'}>{transaction.amount}</span>
                 <MdDeleteForever className='text-red-400 text-xl cursor-pointer' />
