@@ -177,11 +177,11 @@ const TransactionCard = ({ transaction }) => {
 
       {/* Blurred Overlay */}
       {isOpen && (
-        <div className="fixed inset-0 bg-white bg-opacity-10 backdrop-blur-md z-40" onClick={onClose}></div>
+        <div className="fixed inset-0 bg-black bg-opacity-10 backdrop-blur-md z-40" onClick={onClose}></div>
       )}
 
       {/* Modal */}
-      <Modal isOpen={isOpen} onClose={onClose} className="modal-blur fixed top-1/2 left-[45%] sm:left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[330px] sm:w-[350px] z-50">
+      <Modal isOpen={isOpen} onClose={onClose} className="modal-blur no-border fixed top-1/2 left-[45%] sm:left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[330px] sm:w-[350px] z-50">
         <ModalContent className="bg-blue-50 text-bluee rounded-md p-2 overflow-x-auto mx-5 sm:mx-0">
           <ModalHeader className="flex flex-col gap-1 items-center justify-center text-blueee text-2xl">
             Transaction Details

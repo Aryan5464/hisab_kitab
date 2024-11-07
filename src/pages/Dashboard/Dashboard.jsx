@@ -62,11 +62,12 @@ const Dashboard = () => {
   function getTotalBalance(user) {
     return user.contacts.reduce((total, contact) => total + contact.balance, 0);
   }    // Example usage:
-  const totalBalance = getTotalBalance(User);
+  // const totalBalance = getTotalBalance(User);
 
   return (
     <div>
-      <div className="mt-4 flex flex-col gap-2 bg-blueee text-white px-36 p-5 rounded-xl mb-10">
+      <div className="text-4xl h-80 flex items-center"> Dash the board </div>
+      {/* <div className="mt-4 flex flex-col gap-2 bg-blueee text-white px-36 p-5 rounded-xl mb-10">
         <div className='flex justify-between mx-auto gap-28' >
           <img className='w-36 rounded-full' src={profile} alt="" />
           <div >
@@ -84,7 +85,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
