@@ -3,10 +3,12 @@ import profile from '../../images/hisbKitab_profile.jpeg';
 import { SiGmail } from "react-icons/si";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
+import { IoAlarm } from "react-icons/io5";
 import { Button } from "@nextui-org/react";
 import { MdOutlineEdit } from "react-icons/md";
 import { useState } from 'react';
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure, Checkbox, Input, Link } from "@nextui-org/react";
+
 
 
 const initialContact = {
@@ -80,14 +82,16 @@ const SingleContact = () => {
 
                     <Button className='bg-blue-50 text-blueee w-auto h-auto py-1 px-1 rounded-full no-border justify-self-end' color="primary"><MdOutlineEdit /></Button>
                 </div>
-                <div className="flex items-center justify-center gap-x-3">
-                    <Button onPress={onOpen} className='bg-blue-50 text-blueee w-auto h-auto py-1 px-2 rounded-lg no-border scale-85' color="primary">+ Transaction</Button>
+                <div className="flex items-center justify-center gap-x-2">
+                    <Button className='scale-95 bg-red-500 text-slate-200 w-auto h-auto py-1 px-2 rounded-md no-border' color="primary">Settle up</Button>
+                    <Button onPress={onOpen} className='scale-95 bg-blue-50 text-blueee w-auto h-auto py-1 px-2 rounded-md no-border' color="primary">Add Transaction</Button>
                     <AddModal isOpen={isOpen} onOpen={onOpen} onOpenChange={onOpenChange} onClose={onClose} />
-                    <Button className='bg-blue-50 text-blueee w-auto h-auto py-1 px-2 rounded-lg no-border scale-85' color="primary">Settle up</Button>
+                    <Button className='scale-95 bg-blue-50 text-blueee w-auto h-auto py-1 px-2 rounded-md no-border flex items-center' color="primary">Remind <IoAlarm className='text-xl ' /></Button>
+
                 </div>
             </div>
             <div className="mt-1 flex flex-col gap-2 bg-blueee text-white px-5 sm:px-10 md:px-36 p-5 rounded-xl mb-10">
-                <p className="text-center text-2xl font-semibold">Transactions</p>
+                <p className="text-center text-2xl font-semibold text-slate-300">Transactions</p>
                 {contact.transactions.map(transaction => (
                     <SingleTransactionCard
                         key={transaction.id}
@@ -104,12 +108,21 @@ const SingleContact = () => {
     );
 };
 
+const AddModal = ({ isOpen, onOpenChange, onClose }) => {
+    const [selectedOption, setSelectedOption] = useState('');
 
-const AddModal = ({ isOpen, onOpen, onOpenChange, onClose }) => {
+    const optns = [
+        { key: 'you-paid-split', label: 'You Paid, split equally.' },
+        { key: 'you-owed-full', label: 'You are owed the full amount.' },
+        { key: 'friend-paid-split', label: 'Friend paid, split equally.' },
+        { key: 'friend-owed-full', label: 'Friend is owed the full amount.' },
+    ];
 
+    const handleSelectChange = (e) => {
+        setSelectedOption(e.target.value);
+    };
 
     return (
-
         <>
             {/* Blurred Overlay */}
             {isOpen && (
@@ -121,30 +134,36 @@ const AddModal = ({ isOpen, onOpen, onOpenChange, onClose }) => {
                 onOpenChange={onOpenChange}
                 className="modal-blur no-border fixed top-1/2 left-[45%] sm:left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[330px] sm:w-[350px] z-50"
             >
-                <ModalContent className="bg-blueee no-border opacity-80 text-white rounded-md p-4 overflow-x-auto mx-5 sm:mx-0">
-                    {(onClose) => (
-                        <>
-                            <ModalHeader className="flex flex-col gap-1 items-center justify-center text-white text-2xl font-bold">
-                                Add Transaction
-                            </ModalHeader>
-                            <ModalBody className="text-blueee mx-auto">
-                                <input autoFocus className="px-2 py-1 my-3 text-sm rounded w-60" placeholder="Enter amount" />
-                                <input className="px-2 py-1 my-3 text-sm rounded" placeholder="Enter description" />
-                            </ModalBody>
-                            <ModalFooter className="flex justify-end items-center gap-2">
-                                <Button className=' bg-red-600 opacity-90 font-semibold hover:bg-red-500 w-auto h-8 px-3  rounded-lg text-red-100' variant="flat" onPress={onClose}>Close</Button>
-                                <Button className='bg-blue-50 font-semibold text-blueee w-auto h-8 px-2 hover:bg-blue-100 rounded-lg ' onPress={onClose}>Add Transaction</Button>
-                            </ModalFooter>
-                        </>
-                    )}
+                <ModalContent className="bg-blueee no-border opacity-95 text-white rounded-md p-4 overflow-x-auto mx-5 sm:mx-0">
+                    <ModalHeader className="flex flex-col gap-1 items-center justify-center text-white text-2xl font-bold">
+                        Add Transaction
+                    </ModalHeader>
+                    <ModalBody className="text-blueee mx-auto">
+                        <input autoFocus className="px-2 py-1 my-3 text-sm rounded w-60" placeholder="Enter amount" />
+                        <input className="px-2 py-1 my-3 text-sm rounded" placeholder="Enter description" />
+
+                        {/* Select input for transaction options */}
+                        <select
+                            value={selectedOption}
+                            onChange={handleSelectChange}
+                            className="px-2 py-1 my-3 text-sm rounded w-60"
+                        >
+                            <option value="" disabled>Select transaction type</option>
+                            {optns.map(option => (
+                                <option key={option.key} value={option.key}>
+                                    {option.label}
+                                </option>
+                            ))}
+                        </select>
+                    </ModalBody>
+                    <ModalFooter className="flex justify-end items-center gap-2">
+                        <Button className="bg-red-600 opacity-90 font-semibold hover:bg-red-500 w-auto h-8 px-3 rounded-lg text-red-100" variant="flat" onPress={onClose}>Close</Button>
+                        <Button className="bg-blue-50 font-semibold text-blueee w-auto h-8 px-2 hover:bg-blue-100 rounded-lg" onPress={onClose}>Add Transaction</Button>
+                    </ModalFooter>
                 </ModalContent>
             </Modal>
-
-
         </>
-
-
-    )
-}
+    );
+};
 
 export default SingleContact;

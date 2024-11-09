@@ -214,7 +214,7 @@ const Transactions = () => {
     <div>
       <div className="mt-4 flex flex-col gap-2 bg-blueee text-white p-5 rounded-xl mb-10">
         <p className=" text-xl sm:text-2xl font-semibold flex items-center justify-between">Transactions <GiTakeMyMoney className="text-5xl" /> </p>
-        <div className="grid grid-cols-2 sm:grid-cols-6 gap-x-5 sm:gap-x-10 items-center hover:bg-[#294c5c]  p-2 rounded-md w-full">
+        <div className="grid grid-cols-2 sm:grid-cols-6 gap-x-5 sm:gap-x-10 items-center bg-[#294c5c]  p-2 rounded-md w-full">
           <div className="font-semibold sm:text-xl col-span-1">Name</div>
           <div className="font-semibold sm:text-xl col-span-2 hidden sm:block">Description</div>
           <div className="font-semibold sm:text-xl col-span-2 hidden sm:block">Date</div>

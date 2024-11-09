@@ -1,8 +1,6 @@
 import profile from '../../images/hisbKitab_profile.jpeg';
-import { Button} from "@nextui-org/react";
-import { MdAccountBalance } from "react-icons/md";
-
-
+import CalendarComponent from './CalendarComponent';
+import ClockComponent from './ClockComponent';
 
 const User = {
   id: 1,
@@ -11,83 +9,82 @@ const User = {
   lastName: "Jain",
   email: "aryanjain@example.com",
   phoneNumber: "+1234567890",
-  password: "password123", // This would typically be hashed in production
   contacts: [
-    {
-      id: 1,
-      name: "Rohit Sharma",
-      email: "rohit.sharma@example.com",
-      phoneNumber: "+1123456789",
-      ownerId: 1,
-      balance: 50.0,
-      transactions: [
-        {
-          id: 1,
-          contactId: 1,
-          amount: 100.0,
-          description: "Loan repayment",
-          date: new Date("2024-10-01T10:30:00Z"),
-        },
-        {
-          id: 2,
-          contactId: 1,
-          amount: -50.0,
-          description: "Shared dinner expense",
-          date: new Date("2024-10-15T18:45:00Z"),
-        },
-      ],
-    },
-    {
-      id: 2,
-      name: "Sneha Verma",
-      email: "sneha.verma@example.com",
-      phoneNumber: "+1123456790",
-      ownerId: 1,
-      balance: -30.0,
-      transactions: [
-        {
-          id: 3,
-          contactId: 2,
-          amount: -30.0,
-          description: "Gift purchase",
-          date: new Date("2024-10-05T15:20:00Z"),
-        },
-      ],
-    },
+    // Contacts array as given above...
   ],
 };
-
 
 const Dashboard = () => {
   function getTotalBalance(user) {
     return user.contacts.reduce((total, contact) => total + contact.balance, 0);
-  }    // Example usage:
-  // const totalBalance = getTotalBalance(User);
+  }
+
+  const totalBalance = getTotalBalance(User);
 
   return (
-    <div>
-      <div className="text-4xl h-80 flex items-center"> Dash the board </div>
-      {/* <div className="mt-4 flex flex-col gap-2 bg-blueee text-white px-36 p-5 rounded-xl mb-10">
-        <div className='flex justify-between mx-auto gap-28' >
-          <img className='w-36 rounded-full' src={profile} alt="" />
-          <div >
-            <div className='flex gap-x-5 items-center'>
-              <p className=''>{User.userName}</p>
-              <Button variant="default" className="border-1 hover:bg-blue-50 hover:text-blueee transition-all ease-in-out border-blue-50 rounded-lg !h-7 w-24 text-[.7rem]">Edit profile</Button>
-            </div>
-            <div className='flex gap-x-5 items-center'>
-              <span>{User.contacts.length} contacts</span>
-              <span>69 Transactions</span>
-              <span className='flex items-center gap-x-1'><MdAccountBalance /> {totalBalance > 0 ? <span className='text-green-400'>+{totalBalance}</span> : <span className='text-red-500'>{totalBalance}</span>} </span>
-            </div>
-            <div className='mt-3'>
-              <p className='text-sm'> {User.firstName + ' ' + User.lastName} </p>
+    <div className="p-4 mb-10">
+      {/* Main Container */}
+      <div className="grid gap-4">
+        
+        {/* First Row */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {/* Profile Component */}
+          <div className="col-span-1 sm:col-span-2 bg-blueee text-white rounded-lg p-4 flex flex-col sm:flex-row items-center gap-4">
+            <img className="w-24 rounded-full" src={profile} alt="Profile" />
+            <div>
+              <h2 className="text-xl font-bold">{User.firstName} {User.lastName}</h2>
+              <p className="text-gray-100">{User.userName}</p>
+              <p>Total Balance: {totalBalance > 0 ? `+${totalBalance}` : totalBalance}</p>
             </div>
           </div>
+
+          {/* Clock Component */}
+          <div className="bg-green-200 text-white rounded-lg p-4 flex items-center justify-center">
+            {/* Replace with actual Clock component */}
+            <ClockComponent />
+          </div>
+
+          {/* Calendar Component */}
+          <div className="bg-blueee text-white rounded-lg p-4 flex items-center justify-center">
+            {/* Replace with actual Calendar component */}
+            <CalendarComponent />
+          </div>
         </div>
-      </div> */}
+
+        {/* Second Row */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {/* Recent Contacts */}
+          <div className="col-span-1 sm:col-span-2 bg-blueee text-white rounded-lg p-4">
+            <h3 className="text-lg font-semibold mb-2">Recent Contacts</h3>
+            {/* Render a list of recent contacts */}
+            <ul>
+              {User.contacts.map(contact => (
+                <li key={contact.id} className="mb-2">
+                  <p className="font-semibold">{contact.name}</p>
+                  <p className="text-sm text-gray-600">{contact.email}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Recent Transactions */}
+          <div className="col-span-1 sm:col-span-2 bg-blueee text-white rounded-lg p-4">
+            <h3 className="text-lg font-semibold mb-2">Recent Transactions</h3>
+            {/* Render a list of recent transactions */}
+            <ul>
+              {User.contacts.flatMap(contact => contact.transactions).slice(0, 5).map(transaction => (
+                <li key={transaction.id} className="mb-2">
+                  <p className="font-semibold">{transaction.description}</p>
+                  <p className="text-sm text-gray-600">Amount: {transaction.amount}</p>
+                  <p className="text-xs text-gray-400">Date: {new Date(transaction.date).toLocaleDateString()}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Dashboard
+export default Dashboard;
