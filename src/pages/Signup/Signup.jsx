@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import img from '../../images/Logo.png';
+import { Link } from 'react-router-dom';
 
 const Signup = () => {
     const [formData, setFormData] = useState({
@@ -70,7 +71,7 @@ const Signup = () => {
                 <button type="submit" className="w-full bg-[#204353] text-white py-2 rounded-md hover:bg-[#295E3E] transition duration-200">Sign Up</button>
 
                 <hr className='border-x-black' />
-                <p className='text-center mt-5'>Already have an account? <span className="text-blue-600 cursor-pointer">Sign in</span></p>
+                <Link to={'/Login'}><p className='text-center mt-5'>Already have an account? <span className="text-blue-600 cursor-pointer">Login</span></p></Link>
             </form>
         </div>
     );

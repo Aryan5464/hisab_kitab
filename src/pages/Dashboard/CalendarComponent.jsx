@@ -1,5 +1,3 @@
-import React from 'react';
-
 const CalendarComponent = () => {
     // Get the current date
     const currentDate = new Date();

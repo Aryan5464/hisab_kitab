@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import img from '../../images/Logo.png';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -38,7 +39,7 @@ const Login = () => {
         <input type="password" name="password" id="password" required value={formData.password} onChange={handleChange} autoComplete="off" className="bg-slate-200 rounded-md w-full px-2 py-1 mb-6" />
         <button type="submit" className="w-full bg-[#204353] text-white py-2 rounded-md hover:bg-[#295E3E] transition duration-200">Log In</button>
         <hr />
-        <p className='text-center mt-5'>Don&apos;t have an account? <span className="text-blue-600 cursor-pointer">Sign up</span></p>
+        <Link to={'/Signup'}><p className='text-center mt-5'>Don&apos;t have an account? <span className="text-blue-600 cursor-pointer">Sign up</span></p></Link>
       </form>
     </div>
   );
